@@ -7,7 +7,7 @@ class ModelElement:
     cluster_id: str
     speckle_type: str
     geometry: Any
-    level: int
+    level: float
     
 @dataclass
 class OpenSpace(ModelElement):
@@ -55,5 +55,5 @@ class Model:
     #columns: list[Column]
     units: list[Unit]
     open_spaces: list[OpenSpace]
-    levels: list[int]
+    levels: list[float]
     clusters: list[str]
