@@ -1,5 +1,26 @@
 # digital-tissue-automate
 
+Automated function for fetching latest version of a model, calculate metrics and send them to a new model.
+
+## Reference
+### KPIs Structure
+
+1. **Liveability** - Capacity to support everyday wellbeing
+   - Daylight Potential
+   - Green Space Index
+
+2. **Interconnection** - Connections between people and programs
+   - Program Diversity Index
+   - Circulation Efficiency
+
+3. **Adaptability** - Capacity of spaces to transform
+   - Occupancy Efficiency
+   - Net Floor Area Ratio
+
+4. **Sustainability** - Environmental performance
+   - Envelope Efficiency
+   - Carbon Efficiency
+
 ## Setup
 
 ### Prerequisites
