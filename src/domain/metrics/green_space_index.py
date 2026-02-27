@@ -1,4 +1,3 @@
-from domain.model.types import ProgramType
 from domain.model.elements import OpenSpace, Unit
 
 def get_distance_to_nearest_green(res_unit: Unit, green_spaces: list[OpenSpace]) -> float:
