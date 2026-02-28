@@ -1,3 +1,7 @@
+"""
+Calculate green space index based on the distance to the nearest green space.
+"""
+
 from domain.model.elements import OpenSpace, Unit
 
 def get_distance_to_nearest_green(res_unit: Unit, green_spaces: list[OpenSpace]) -> float:
@@ -22,4 +26,5 @@ def calculate_green_space_index_avg(res_units: list[Unit], green_spaces: list[Op
     """
     Calculate avg green space index score for a list of units.
     """
-    return sum(calculate_green_space_index(unit, green_spaces) for unit in res_units) / len(res_units)
+    total_score = sum(calculate_green_space_index(unit, green_spaces) for unit in res_units)
+    return total_score / len(res_units) if res_units else 0

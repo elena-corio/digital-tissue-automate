@@ -1,6 +1,9 @@
+"""
+Calculate daylight potential based on window area and floor area.
+"""
+
 from domain.model.elements import Facade, Unit
 from domain.model.types import MaterialType
-from domain.rules.loader import load_rulebook
 
 def _is_transparent(material: MaterialType, rulebook: dict) -> bool:
     """

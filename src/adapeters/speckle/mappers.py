@@ -1,3 +1,7 @@
+"""
+Mappers to convert Speckle objects to domain model elements.
+"""
+
 from domain.model.elements import Facade
 from domain.model.types import ProgramType
 from domain.model.elements import OpenSpace, Unit
@@ -23,7 +27,6 @@ def speckle_to_open_space(speckle_obj) -> OpenSpace:
         speckle_type=speckle_obj.speckle_type,
         geometry=speckle_obj
     )
-    
 
 def speckle_to_facade(speckle_obj) -> Facade:
     """Convert Speckle object to domain Facade."""

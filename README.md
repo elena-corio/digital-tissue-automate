@@ -76,3 +76,9 @@ pytest
 ```
 uv pip install -e . after every change
 
+### Linting the files
+```
+pylint --rcfile=pylintrc src
+```
+
+

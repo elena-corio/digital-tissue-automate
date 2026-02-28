@@ -1,3 +1,7 @@
+"""
+Calculate program diversity index based on the distribution of program types among units.
+"""
+
 from domain.model.elements import Unit
 
 # program_i_units_count	= count(program_i_units)
@@ -24,11 +28,8 @@ def calculate_program_diversity_index(units: list[Unit]) -> float:
     Calculate the program diversity index for a list of units.
     """
     program_counts = count_programs(units)
-    
     total_units = len(units)
     if total_units == 0:
         return 0.0
-    
     program_frequencies = calculate_program_frequencies(program_counts)
-    
     return 1 - (program_frequencies / (total_units ** 2))

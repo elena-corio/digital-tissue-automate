@@ -1,3 +1,6 @@
+"""
+Ids of the workspace, project, source model and target model in the IAAC Collaborative Platform"""
+
 WORKSPACE_ID = "a1cd06bae2"
 PROJECT_ID = "dcca94731b"
 SOURCE_MODEL_ID = "827526cd48"

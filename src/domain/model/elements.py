@@ -1,3 +1,6 @@
+"""
+Domain model elements representing the building components and spaces.
+"""
 from dataclasses import dataclass
 from typing import Any
 from domain.model.types import MaterialType, ProgramType, SectionType
