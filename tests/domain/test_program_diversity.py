@@ -1,7 +1,6 @@
-import pytest
+from fixture import make_unit
 from domain.metrics.program_diversity import calculate_program_diversity_index
 from domain.model.types import ProgramType
-from fixture import make_unit
 
 def test_calculate_program_diversity_index_single_program():
     units = [make_unit(), make_unit(), make_unit()]
@@ -9,7 +8,12 @@ def test_calculate_program_diversity_index_single_program():
     assert calculate_program_diversity_index(units) == 0.0
 
 def test_calculate_program_diversity_index_multiple_programs():
-    units = [make_unit(program=ProgramType.LIVING), make_unit(program=ProgramType.LIVING), make_unit(program=ProgramType.WORKING), make_unit(program=ProgramType.WORKING)]
+    units = [
+        make_unit(program=ProgramType.LIVING), 
+        make_unit(program=ProgramType.LIVING), 
+        make_unit(program=ProgramType.WORKING), 
+        make_unit(program=ProgramType.WORKING)
+        ]
     # 2 of LIVING, 2 of WORKING, diversity index = 1 - (2^2 + 2^2) / 4^2 = 1 - (4+4)/16 = 0.5
     assert calculate_program_diversity_index(units) == 0.5
 

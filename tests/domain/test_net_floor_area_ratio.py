@@ -1,6 +1,5 @@
-import pytest
-from domain.metrics.net_floor_area_ratio import calculate_net_floor_area_ratio
 from fixture import make_unit, make_slab
+from domain.metrics.net_floor_area_ratio import calculate_net_floor_area_ratio
 
 def test_calculate_net_floor_area_ratio_normal():
     slabs = [make_slab(area=100), make_slab(area=200)]

@@ -1,13 +1,10 @@
-# Import required modules and functions
 import pytest
+from fixture import make_unit, make_green
 from domain.metrics.green_space_index import (
 	get_distance_to_nearest_green,
 	calculate_green_space_index,
 	calculate_green_space_index_avg
 )
-from domain.model.elements import OpenSpace, Unit
-from domain.model.types import ProgramType
-from fixture import make_unit, make_green
 
 def test_get_distance_to_nearest_green_none():
 	unit = make_unit(9.0)
