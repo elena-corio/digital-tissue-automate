@@ -74,5 +74,10 @@ To run the main script:
 uv pip install -e .
 pytest
 ```
-uv pip install -e . after every change
+### Linting the files
+```
+pylint --rcfile=pylintrc src
+pylint --rcfile=tests/pylintrc tests
+```
+
 

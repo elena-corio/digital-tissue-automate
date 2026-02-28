@@ -1,3 +1,7 @@
+"""
+Domain model types representing various classifications used in the building model.
+"""
+
 from enum import Enum
 
 class ProgramType(str, Enum):

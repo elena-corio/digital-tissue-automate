@@ -1,3 +1,6 @@
+"""
+Domain model elements representing the building components and spaces.
+"""
 from dataclasses import dataclass
 from typing import Any
 from domain.model.types import MaterialType, ProgramType, SectionType
@@ -7,7 +10,7 @@ class ModelElement:
     cluster_id: str
     speckle_type: str
     geometry: Any
-    level: int
+    level: float
     
 @dataclass
 class OpenSpace(ModelElement):
@@ -15,7 +18,7 @@ class OpenSpace(ModelElement):
 
 @dataclass
 class Unit (ModelElement):
-    name: ProgramType
+    program: ProgramType
     area: float
 
 @dataclass
@@ -55,5 +58,5 @@ class Model:
     #columns: list[Column]
     units: list[Unit]
     open_spaces: list[OpenSpace]
-    levels: list[int]
+    levels: list[float]
     clusters: list[str]

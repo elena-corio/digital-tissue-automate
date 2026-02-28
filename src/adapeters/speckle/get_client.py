@@ -1,3 +1,7 @@
+"""
+Get a SpeckleClient instance authenticated with a token.
+
+"""
 import os
 from dotenv import load_dotenv
 from specklepy.api.client import SpeckleClient
@@ -19,10 +23,10 @@ def get_client() -> SpeckleClient:
         raise ValueError("Set SPECKLE_TOKEN in your .env file and re-run.")
 
     # Authenticate
-    client = SpeckleClient(host=server_host)
-    client.authenticate_with_token(token)
+    speckle_client = SpeckleClient(host=server_host)
+    speckle_client.authenticate_with_token(token)
 
-    return client
+    return speckle_client
 
 
 if __name__ == "__main__":
