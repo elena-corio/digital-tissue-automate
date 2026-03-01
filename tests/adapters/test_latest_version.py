@@ -1,11 +1,8 @@
+import logging
 from unittest.mock import Mock, MagicMock
 from adapters.latest_version import get_latest_version
 
-"""
-This test checks that the function returns the latest version and prints the correct message.
-"""
-
-def test_get_latest_version_returns_latest_and_prints(capsys):
+def test_get_latest_version_returns_latest_and_prints(caplog):
     # Arrange
     mock_client = Mock()
     mock_version = MagicMock()
@@ -15,18 +12,15 @@ def test_get_latest_version_returns_latest_and_prints(capsys):
     mock_client.version.get_versions.return_value = mock_versions
 
     # Act
-    result = get_latest_version(mock_client)
+    with caplog.at_level(logging.INFO):
+        result = get_latest_version(mock_client)
 
     # Assert
     assert result == mock_version
     mock_client.version.get_versions.assert_called_once()
-    captured = capsys.readouterr()
-    assert "✓ Fetching version: test_version_id" in captured.out
+    assert "✓ Fetching version: test_version_id" in caplog.text
 
-"""
-This test test checks the case where no versions are found.
-"""
-def test_get_latest_version_no_versions(capsys):
+def test_get_latest_version_no_versions(caplog):
     # Arrange
     mock_client = Mock()
     mock_versions = MagicMock()
@@ -34,9 +28,9 @@ def test_get_latest_version_no_versions(capsys):
     mock_client.version.get_versions.return_value = mock_versions
 
     # Act
-    result = get_latest_version(mock_client)
+    with caplog.at_level(logging.WARNING):
+        result = get_latest_version(mock_client)
 
     # Assert
     assert result is None
-    captured = capsys.readouterr()
-    assert "No versions found." in captured.out
+    assert "No versions found." in caplog.text

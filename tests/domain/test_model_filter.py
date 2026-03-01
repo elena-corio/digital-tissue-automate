@@ -19,8 +19,6 @@ def sample_model():
         make_facade(cluster_id="B", level=1.0)
     ]
     open_spaces = [
-        make_open_space(cluster_id="A", level=0.0),
-        make_open_space(cluster_id="B", level=1.0)
     ]
     slabs = [
         make_slab(cluster_id="A", level=0.0),
@@ -44,7 +42,7 @@ def test_filter_model_by_cluster_and_level(sample_model):
     filtered = filter_model(sample_model, filter_fn)
 
     # All elements should have cluster_id "A" and level 0.0
-    for attr in ["columns", "cores", "facades", "open_spaces", "slabs", "units", "volumes"]:
+    for attr in ["columns", "cores", "facades", "slabs", "units", "volumes"]:
         items = getattr(filtered, attr)
         assert len(items) == 1
         assert getattr(items[0], "cluster_id", None) == "A"

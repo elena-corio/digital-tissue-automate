@@ -37,14 +37,14 @@ def test_receive_data_with_magicmock():
         DummyCollection("UNITS", [DummyElement(6)]),
         DummyCollection("VOLUMES", [DummyElement(7)]),
     ])
-    with patch("adapters.create_domain_model.operations.receive", return_value=dummy_data) as mock_receive, \
-         patch("adapters.create_domain_model.speckle_to_column", side_effect=lambda e: e.value + 1), \
-         patch("adapters.create_domain_model.speckle_to_core", side_effect=lambda e: e.value + 2), \
-         patch("adapters.create_domain_model.speckle_to_facade", side_effect=lambda e: e.value + 3), \
-         patch("adapters.create_domain_model.speckle_to_open_space", side_effect=lambda e: e.value + 4), \
-         patch("adapters.create_domain_model.speckle_to_slab", side_effect=lambda e: e.value + 5), \
-         patch("adapters.create_domain_model.speckle_to_unit", side_effect=lambda e: e.value + 6), \
-         patch("adapters.create_domain_model.speckle_to_volume", side_effect=lambda e: e.value + 7):
+    with patch("adapters.speckle_to_domain.operations.receive", return_value=dummy_data) as mock_receive, \
+         patch("adapters.speckle_to_domain.speckle_to_column", side_effect=lambda e: e.value + 1), \
+         patch("adapters.speckle_to_domain.speckle_to_core", side_effect=lambda e: e.value + 2), \
+         patch("adapters.speckle_to_domain.speckle_to_facade", side_effect=lambda e: e.value + 3), \
+         patch("adapters.speckle_to_domain.speckle_to_open_space", side_effect=lambda e: e.value + 4), \
+         patch("adapters.speckle_to_domain.speckle_to_slab", side_effect=lambda e: e.value + 5), \
+         patch("adapters.speckle_to_domain.speckle_to_unit", side_effect=lambda e: e.value + 6), \
+         patch("adapters.speckle_to_domain.speckle_to_volume", side_effect=lambda e: e.value + 7):
         mock_version = MagicMock()
         mock_version.referenced_object = "mock_object_id"
         mock_transport = MagicMock()

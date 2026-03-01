@@ -26,7 +26,7 @@ def test_calculate_metrics(sample_model):
         "circulation_efficiency",
         "usable_area_ratio",
         "net_floor_area_ratio",
-        "volume_to_envelope_ratio",
+        "volume_to_envelope_factor",
         "carbon_efficiency"
     ]
     for key in expected_keys:

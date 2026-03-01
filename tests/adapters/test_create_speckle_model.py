@@ -1,6 +1,6 @@
 import pytest
 from domain.model.fixture import make_model, make_volume
-from adapters.create_speckle_model import create_base, create_element, model_to_speckle
+from adapters.domain_to_speckle import create_base, create_element, model_to_speckle
 from specklepy.objects.base import Base 
 
 @pytest.fixture
@@ -26,8 +26,8 @@ def test_create_base(sample_model):
 
 def test_create_element(sample_model):
     # Use first volume as ModelElement
-    element = sample_model.volumes[0]
-    result = create_element(element, "TestElement", sample_model, {"baz": 42}, rulebook={})
+    speckle_obj = sample_model.volumes[0].geometry
+    result = create_element(speckle_obj, "TestElement", sample_model, {"baz": 42}, rulebook={})
     assert hasattr(result, "name")
     assert result.name == "TestElement"
     assert result["properties"]["baz"] == 42
