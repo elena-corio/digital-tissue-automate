@@ -63,10 +63,8 @@ Automated function for fetching latest version of a model, calculate metrics and
 
 To run the main script:
 ```
-uv python src/main.py
+python src/main.py
 ```
-Replace `src/main.py` with your actual entry point if different.
-
 ### Running the tests
 
 To run the main script:
