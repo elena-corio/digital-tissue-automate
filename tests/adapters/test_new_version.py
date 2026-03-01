@@ -1,5 +1,5 @@
 from unittest.mock import Mock, MagicMock
-from adapters.create_version import create_version
+from adapters.new_version import create_version
 
 def test_create_version_prints_and_calls_create(monkeypatch):
     # Arrange
