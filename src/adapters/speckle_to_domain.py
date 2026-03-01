@@ -1,3 +1,5 @@
+import logging
+logging.basicConfig(level=logging.INFO)
 from specklepy.api import operations
 
 from adapters.mappers import speckle_to_column, speckle_to_core, speckle_to_facade, speckle_to_open_space, speckle_to_slab, speckle_to_unit, speckle_to_volume
@@ -29,7 +31,6 @@ def receive_and_convert_data(version, transport) -> Model:
     Receive data from Speckle and convert it to domain model.
     """
     data = operations.receive(version.referenced_object, transport)
-    print("Data type: ", type(data))
 
     mapping = {
         "COLUMNS": speckle_to_column,
@@ -45,5 +46,8 @@ def receive_and_convert_data(version, transport) -> Model:
         key.lower(): map_elements_by_collection(data, key, func)
         for key, func in mapping.items()
     }
+    
+    logging.info(f"Received and converted data for collections: {', '.join(model_kwargs.keys())}")
+    
     # Constructs a Model object, passing each key-value pair as a keyword argument
     return Model(**model_kwargs)

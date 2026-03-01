@@ -1,3 +1,5 @@
+import logging
+logging.basicConfig(level=logging.INFO)
 from config import PROJECT_ID, TARGET_MODEL_ID
 from specklepy.core.api.inputs.version_inputs import CreateVersionInput
 from specklepy.core.api.inputs.model_inputs import CreateModelInput
@@ -12,4 +14,4 @@ def create_version(client: SpeckleClient, object_id):
     )
     version = client.version.create(version_input)
 
-    print(f"✓ Created version: {version.id}")
+    logging.info(f"✓ Created version: {version.id}")
