@@ -4,7 +4,7 @@ Calculate volume to envelope ratio given building volumes and facades.
 
 from domain.model.elements import Facade, Volume
 
-def calculate_volume_to_envelope_ratio(volumes: list[Volume], facades: list[Facade]) -> float:
+def calculate_volume_to_envelope_factor(volumes: list[Volume], facades: list[Facade]) -> float:
     """
     Calculate volume to envelope ratio given building volumes and facades.
     """
