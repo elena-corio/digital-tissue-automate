@@ -33,13 +33,13 @@ pip install -e ".[dev]"
 ### Environment Variables
 Create a `.env` file in the project root:
 ```
-WORKSPACE_ID=your_workspace_id
-PROJECT_ID=your_project_id
-SOURCE_MODEL=your_source_model
-TARGET_MODEL=your_target_model
-SPECKLE_TOKEN="your_token"
-SPECKLE_SERVER=https://app.speckle.systems
+SPECKLE_TOKEN=your_personal_access_token
+SPECKLE_SERVER_URL=https://app.speckle.systems
+SPECKLE_PROJECT_ID=your_project_id
+SPECKLE_AUTOMATION_ID=your_test_automation_id
 ```
+
+**Note:** Workspace ID, source model ID, and target model ID are stored in `src/config.py` as they are specific to this function's domain logic.
 
 ## Commands
 
