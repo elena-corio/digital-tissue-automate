@@ -20,6 +20,10 @@ jobs:
           pip install .[dev]
       - name: Extract functionInputSchema
         id: extract_schema
+        env:
+          SPECKLE_TOKEN: ${{ secrets.SPECKLE_TOKEN }}
+          SPECKLE_SERVER_URL: ${{ secrets.SPECKLE_SERVER_URL }}
+          SPECKLE_PROJECT_ID: ${{ secrets.SPECKLE_PROJECT_ID }}
         run: |
           python main.py generate_schema ${HOME}/${{ env.FUNCTION_SCHEMA_FILE_NAME }}
       - name: Speckle Automate Function - Build and Publish
