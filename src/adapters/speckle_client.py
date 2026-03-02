@@ -2,6 +2,8 @@
 Get a SpeckleClient instance authenticated with a token.
 
 """
+import logging
+logging.basicConfig(level=logging.INFO)
 import os
 from dotenv import load_dotenv
 from specklepy.api.client import SpeckleClient
@@ -26,11 +28,7 @@ def get_client() -> SpeckleClient:
     speckle_client = SpeckleClient(host=server_host)
     speckle_client.authenticate_with_token(token)
 
+    user = speckle_client.active_user.get()
+    logging.info(f"✓ Logged in as {user.name} on {speckle_client.url}")
+    
     return speckle_client
-
-
-if __name__ == "__main__":
-    # Test authentication when running this script directly
-    client = get_client()
-    user = client.active_user.get()
-    print(f"✓ Logged in as {user.name} on {client.url}")
