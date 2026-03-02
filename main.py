@@ -1,5 +1,10 @@
 import sys
 import json
+import os
+
+# Add src directory to path for imports
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
+
 from application.run_application import run_application
 
 def main():
