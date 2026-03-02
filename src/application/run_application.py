@@ -9,25 +9,41 @@ from domain.rules.loader import load_rulebook
 from config import PROJECT_ID
 
 
-def run_application():
+def run_application(automate_context=None, function_inputs=None, token=None):
     """
     Main function to run the application.
+    
+    Args:
+        automate_context: AutomationContext from Speckle Automate (preferred)
+        function_inputs: Function inputs from Speckle Automate
+        token: Optional token (not used when automate_context provided)
     """
     # Load the rulebook to calculate metrics
     rulebook = load_rulebook()
     
-    # Initializes the client and server transport to receive data.
-    client  = get_client()
-    transport = ServerTransport(stream_id=PROJECT_ID, client=client)
+    # Use provided automate_context or create a standalone client
+    if automate_context:
+        # Use the pre-authenticated client from Speckle Automate
+        client = automate_context.speckle_client
+        # Receive the version that triggered this automation
+        version = automate_context.receive_version()
+    else:
+        # Standalone mode (for local testing)
+        client = get_client()
+        version = get_latest_version(client)
     
-    # Get the latest version of source model and 
-    version = get_latest_version(client)
+    # Create transport for the project
+    transport = ServerTransport(stream_id=PROJECT_ID, client=client)
     
     # Receive data, converting it to the domain model.
     domain_model = receive_and_convert_data(version, transport)
     
     # Convert the domain model to a Speckle model and send it to the target model.
-    object_id = create_and_send_speckle_model(domain_model = domain_model, rulebook=rulebook, transport=transport)
+    object_id = create_and_send_speckle_model(
+        domain_model=domain_model, 
+        rulebook=rulebook, 
+        transport=transport
+    )
     print(f"✓ Created and sent Speckle model with object ID: {object_id}")
     
     # Create a new version in target model 
